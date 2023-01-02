@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://models/chan1.glb" type="PackedScene" id=1]
+[ext_resource path="res://MonkeyAnim.gd" type="Script" id=2]
+[ext_resource path="res://TempMaterial.tres" type="Material" id=3]
+[ext_resource path="res://AnimationTree.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 1.01215
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "ArmatureAction001"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "ArmatureAction"
+
+[sub_resource type="AnimationNodeBlend2" id=4]
+
+[sub_resource type="AnimationNodeBlendTree" id=3]
+graph_offset = Vector2( 40.8333, -64.9167 )
+nodes/Animation/node = SubResource( 2 )
+nodes/Animation/position = Vector2( 220, 60 )
+"nodes/Animation 2/node" = SubResource( 5 )
+"nodes/Animation 2/position" = Vector2( 160, 240 )
+nodes/Blend2/node = SubResource( 4 )
+nodes/Blend2/position = Vector2( 540, 80 )
+nodes/output/position = Vector2( 840, 80 )
+node_connections = [ "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "output", 0, "Blend2" ]
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0.117117, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.432432, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.684685, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="MonkeyAnim" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+f = 1
+
+[node name="Suzanne" parent="Armature/Skeleton" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "ArmatureAction"
+playback_process_mode = 0
+playback_speed = 1.12
+
+[node name="Area" type="Area" parent="." index="2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+shape = SubResource( 1 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource( 3 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Blend2/blend_amount = 1.0
+script = ExtResource( 4 )
+curve = SubResource( 6 )
+
+[connection signal="input_event" from="Area" to="." method="_on_Area_input_event"]

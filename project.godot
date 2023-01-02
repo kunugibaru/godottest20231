@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Spatial",
+"class": "MonkeyAnim",
+"language": "GDScript",
+"path": "res://MonkeyAnim.gd"
+} ]
+_global_script_class_icons={
+"MonkeyAnim": ""
+}
+
 [application]
 
 config/name="te2023_1"
