@@ -6,8 +6,8 @@
 [sub_resource type="Theme" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 75
-outline_size = 8
+size = 26
+outline_size = 6
 outline_color = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
 font_data = ExtResource( 1 )
 
@@ -18,18 +18,18 @@ anchor_bottom = 1.0
 [node name="Label" type="Label" parent="."]
 margin_left = 12.0
 margin_top = 12.0
-margin_right = 470.0
-margin_bottom = 347.0
+margin_right = 318.0
+margin_bottom = 261.0
 theme = SubResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "test!!
 日本語！"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 345.0
-margin_top = 89.0
-margin_right = 799.0
-margin_bottom = 425.0
+margin_left = 9.0
+margin_top = 103.0
+margin_right = 197.0
+margin_bottom = 244.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )

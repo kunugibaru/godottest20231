@@ -1,18 +1,17 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://models/chan1.glb" type="PackedScene" id=1]
 [ext_resource path="res://MonkeyAnim.gd" type="Script" id=2]
-[ext_resource path="res://TempMaterial.tres" type="Material" id=3]
 [ext_resource path="res://AnimationTree.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.01215
 
 [sub_resource type="AnimationNodeAnimation" id=5]
-animation = "ArmatureAction001"
+animation = "Walk-loop"
 
 [sub_resource type="AnimationNodeAnimation" id=2]
-animation = "ArmatureAction"
+animation = "Idle-loop"
 
 [sub_resource type="AnimationNodeBlend2" id=4]
 
@@ -33,9 +32,6 @@ _data = [ Vector2( 0.117117, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.432432, 1 ), 0.0, 0
 [node name="MonkeyAnim" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 f = 1
-
-[node name="Suzanne" parent="Armature/Skeleton" index="0"]
-material/0 = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "ArmatureAction"

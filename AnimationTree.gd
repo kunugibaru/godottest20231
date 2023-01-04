@@ -16,7 +16,7 @@ func _ready():
 
 func _process(delta):
 	c += 1
-	if (int(c) % 100) == 0:
+	if (int(c) % 400) == 0:
 		forward = !forward
 	
 	set("parameters/Blend2/blend_amount", self.curve.interpolate((c % 100)*0.01))
